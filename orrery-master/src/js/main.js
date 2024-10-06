@@ -7,7 +7,7 @@ function main() {
         drawOrbit(c, planets[p]);
         drawPlanet(c, planets[p]);
     }
-    infoTable()
+    // infoTable()
 }
 
 function initCanvas() {
