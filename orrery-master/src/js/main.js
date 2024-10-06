@@ -31,17 +31,17 @@ function updatePlanetPosition(planet, time) {
 }
 
 function animate(c) {
-    const time = Date.now() * 0.001;  // Get current time in seconds
-    
+    const time = Date.now() * 0.001;
+
     // Clear the canvas before each frame
     c.clearRect(0, 0, c.canvas.width, c.canvas.height);
 
-    // Generate stars once (they don’t move)
-    generateStars(c);
+    // Draw the stars (without moving them)
+    drawStars(c);
 
     // Draw the sun (it doesn’t move)
     drawPlanet(c, planets.sun);
-    
+
     // Update and draw each planet
     for (let p in planets) {
         if (p !== "sun") {
@@ -50,24 +50,32 @@ function animate(c) {
             drawPlanet(c, planets[p]);  // Draw the planet
         }
     }
-    
+
     // Call `animate` again on the next frame
     requestAnimationFrame(() => animate(c));
 }
 
-function generateStars(c) {
-    var x, y = Math.random();
-    var dia = c.canvas.clientWidth;
+let stars = [];  // Store the star coordinates here
 
-    for (; y < dia; y++) {
-        for (x = Math.random(); x < dia; x++) {
-            c.fillStyle = "white";
-            c.fillRect(
-                (Math.floor(Math.random() * c.canvas.clientWidth) * (200 * Math.random())), 
-                (Math.floor(Math.random() * c.canvas.clientHeight) * (150 * Math.random())), 1, 1
-            );
-        }
+function generateStars(c) {
+    const numStars = 500;  // Define the number of stars you want
+    const canvasWidth = c.canvas.clientWidth;
+    const canvasHeight = c.canvas.clientHeight;
+    
+    for (let i = 0; i < numStars; i++) {
+        // Generate random x and y positions for stars
+        const x = Math.random() * canvasWidth;
+        const y = Math.random() * canvasHeight;
+        stars.push({ x: x, y: y });  // Store each star's coordinates
     }
+}
+
+function drawStars(c) {
+    c.fillStyle = "white";
+    stars.forEach(star => {
+        // Draw stars at their fixed positions
+        c.fillRect(star.x, star.y, 1, 1);
+    });
 }
 
 // Draw planet and its label
@@ -122,3 +130,4 @@ function infoTable() {
         "</tr>";
     }
 }
+
