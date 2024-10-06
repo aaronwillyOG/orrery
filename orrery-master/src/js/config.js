@@ -7,8 +7,8 @@ const planets = {
     mars:    ["Mars",       1.25,  6,         687,    600,     600,     10,     0,      2,      "red",      "white"],
     jupiter: ["Jupiter",    27.5,  7.5,        4331,   550,     550,     20,     0,      2,      "orange",    "white"],
     saturn:  ["Saturn",     24.75, 9,        10747,  500,     500,     18,     0,      2,      "moccasin",  "white"],
-    uranus:  ["Uranus",     2,     10.5,         20000,  450,     450,     16,     0,      2,      "aqua",     "white"],
-    neptune: ["Neptune",    3,     12,         40000,  400,     400,     12,     0,      2,      "blue",     "white"]
+    uranus:  ["Uranus",     2,     10.5,         500,  450,     450,     16,     0,      2,      "aqua",     "white"],
+    neptune: ["Neptune",    3,     12,         2000,  400,     400,     12,     0,      2,      "blue",     "white"]
 };
 
 const properties = {
