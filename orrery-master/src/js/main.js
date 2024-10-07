@@ -131,4 +131,36 @@ function infoTable() {
     }
 }
 //this is to check the commit
+const canvas = document.getElementById(properties.canvasName);
+
+canvas.addEventListener('mousemove', function (event) {
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+
+    const earth = planets.earth;
+    const dist = Math.sqrt((mouseX - earth[4]) ** 2 + (mouseY - earth[5]) ** 2); // Calculate distance from Earth center
+
+    // If hovering over Earth, change cursor to pointer
+    if (dist <= earth[6]) {
+        canvas.style.cursor = 'pointer';
+    } else {
+        canvas.style.cursor = 'default';
+    }
+});
+
+canvas.addEventListener('click', function (event) {
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+
+    const earth = planets.earth;
+    const dist = Math.sqrt((mouseX - earth[4]) ** 2 + (mouseY - earth[5]) ** 2);  // Calculate distance from Earth center
+
+    // Redirect to NEO page if the click is within Earth's radius
+    if (dist <= earth[6]) {
+        console.log("Earth clicked! Redirecting to NEO page...");
+        window.location.href = "earth_neos.html";  // Redirect to earth_neos.html
+    }
+});
 
