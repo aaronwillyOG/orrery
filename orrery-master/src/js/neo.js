@@ -1,7 +1,7 @@
 const neos = [
     { name: "NEO1", size: 2, distanceFromEarth: 0.05 }, // distance from Earth in AU
     { name: "NEO2", size: 1, distanceFromEarth: 0.07 },
-    { name: "NEO3", size: 3, distanceFromEarth: 0.02 },
+    { name: "NEO3", size: 3, distanceFromEarth: 0.10 },
 ];
 
 function drawNEOs() {
@@ -29,7 +29,7 @@ function drawNEOs() {
     neos.forEach((neo, index) => {
         // Position the NEOs around Earth in a circular pattern
         const angle = (index / neos.length) * 2 * Math.PI; // Spread them evenly around a circle
-        const distance = (neo.distanceFromEarth / 0.1) * 80; // Scale the distance for visualization
+        const distance = (neo.distanceFromEarth / 0.1) * 50; // Scale the distance for visualization
         const x = earthX + (distance + earthSize) * Math.cos(angle); // Add Earth's size to distance
         const y = earthY + (distance + earthSize) * Math.sin(angle); // Add Earth's size to distance
 
